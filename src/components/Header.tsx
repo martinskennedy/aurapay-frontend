@@ -19,7 +19,7 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <button className="text-sm font-medium hover:text-primary transition">Entrar</button>
-          <button className="bg-primary text-black px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition shadow-lg shadow-primary/20">
+          <button className="bg-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition shadow-lg shadow-primary/20">
             Abrir conta
           </button>
         </div>
