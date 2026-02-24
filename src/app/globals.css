@@ -3,19 +3,24 @@
 @theme {
   --color-primary: #6366f1;
   --color-secondary: #a855f7;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
   --color-border: hsl(var(--border));
+  --color-card: hsl(var(--card));
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --border: 214.3 31.8% 91.4%;
+--background: 240 4.8% 95.9%; 
+  --foreground: 240 10% 3.9%;  --border: 214.3 31.8% 91.4%;
+  --card: 0 0% 100%;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
+  /* Azul Marinho Profundo (Estilo Premium) */
+  --background: 222 47% 4%;     
   --foreground: 210 40% 98%;
   --border: 217.2 32.6% 17.5%;
+  --card: 222 47% 7%;            /* Card levemente mais claro que o fundo */
 }
 
 body {
