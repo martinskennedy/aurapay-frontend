@@ -2,7 +2,7 @@ import { Wallet, Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-border pt-16 pb-8">
+    <footer className="border-t border-border pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo e Descrição */}
@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Links Rápidos */}
           <div>
             <h4 className="font-bold mb-4">Produto</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-500">
               <li><a href="#" className="hover:text-primary transition">Conta Digital</a></li>
               <li><a href="#" className="hover:text-primary transition">Cartão Global</a></li>
               <li><a href="#" className="hover:text-primary transition">Investimentos</a></li>
@@ -28,7 +28,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-bold mb-4">Empresa</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-500">
               <li><a href="#" className="hover:text-primary transition">Sobre nós</a></li>
               <li><a href="#" className="hover:text-primary transition">Carreiras</a></li>
               <li><a href="#" className="hover:text-primary transition">Segurança</a></li>
@@ -39,9 +39,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white rounded-full border border-border hover:text-primary transition shadow-sm"><Github className="w-5 h-5" /></a>
-              <a href="#" className="p-2 bg-white rounded-full border border-border hover:text-primary transition shadow-sm"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="p-2 bg-white rounded-full border border-border hover:text-primary transition shadow-sm"><Twitter className="w-5 h-5" /></a>
+              <a href="#" className="p-2 bg-card rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Github className="w-5 h-5" /></a>
+              <a href="#" className="p-2 bg-prima rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Linkedin className="w-5 h-5" /></a>
+              <a href="#" className="p-2 bg-card rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Twitter className="w-5 h-5" /></a>
             </div>
           </div>
         </div>

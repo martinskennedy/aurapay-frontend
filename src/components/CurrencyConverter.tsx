@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { RefreshCw, ArrowRightLeft, AlertCircle } from "lucide-react";
 
 export default function CurrencyConverter() {
@@ -40,38 +39,41 @@ export default function CurrencyConverter() {
   const result = amount > 0 && rate > 0 ? amount / rate : 0;
 
   return (
-    <section className="py-24 bg-white">
+    <section className="pb-16 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto bg-primary/5 rounded-3xl p-8 lg:p-12 border border-primary/10 flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1 text-center lg:text-left">
+        <div className="max-w-5xl mx-auto bg-linear-to-br from-primary/40 via-transparent to-secondary/20 rounded-[2.5rem] p-8 lg:p-16 border border-border/50 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/20 blur-[100px] rounded-full" />
+          <div className="flex-1 text-center lg:text-left z-10">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
               Transfira globalmente com a{" "}
-              <span className="text-primary">melhor taxa</span>.
+              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
+                melhor taxa
+              </span>
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-foreground/70 text-lg mb-8 max-w-md">
               Diga adeus às taxas bancárias abusivas. Com a AuraPay, você usa o
               câmbio comercial em tempo real.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center lg:justify-start gap-4 text-sm font-semibold">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
               <span
-                className="flex items-center gap-1 text-primary cursor-pointer hover:opacity-80 transition-all active:scale-95"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all active:scale-95"
                 onClick={() => !loading && fetchExchangeRate()} // Só clica se não estiver carregando
                 title="Clique para atualizar"
               >
                 <RefreshCw
-                  className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+                  className={`w-3 h-3 ${loading ? "animate-spin" : ""}`}
                 />
-                {loading ? "Atualizando..." : "Câmbio comercial ao vivo"}
+                {loading ? "Atualizando..." : "Câmbio ao vivo"}
               </span>{" "}
               {rate > 0 && (
-                <span className="text-gray-500">
+                <div className="px-2.5 py-1.5 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
                   1 USD ={" "}
                   {rate.toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })}
-                </span>
+                </div>
               )}
             </div>
 
@@ -84,42 +86,44 @@ export default function CurrencyConverter() {
           </div>
 
           {/* Card da Calculadora */}
-          <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-xl border border-border">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="w-full max-w-md bg-background p-8 rounded-3xl shadow-2xl shadow-primary/80 border border-border relative z-10">
+            <div className="space-y-6">
+              <div className="relative">
+                <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2 ml-1">
                   Você envia (BRL)
                 </label>
                 <input
                   type="number"
-                  value={amount}
+                  value={amount === 0 ? "" : amount}
                   onChange={(e) => setAmount(Number(e.target.value))}
-                  className="w-full px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-primary focus:outline-none font-bold text-xl"
+                  className="w-full px-5 py-4 rounded-2xl bg-foreground/[0.03] border border-border focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-2xl outline-none"
                   placeholder="0,00"
                 />
               </div>
 
-              <div className="flex justify-center -my-2">
-                <div className="bg-primary text-white p-2 rounded-full z-10 shadow-md">
-                  <ArrowRightLeft className="w-5 h-5" />
+              <div className="flex justify-center -my-8 relative z-20">
+                <div className="bg-primary text-white p-3 rounded-2xl shadow-xl shadow-primary/40 rotate-0 hover:rotate-180 transition-transform duration-500 cursor-pointer">
+                  <ArrowRightLeft className="w-6 h-6" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2 ml-1">
                   Você recebe (USD)
                 </label>
-                <div className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-border font-bold text-xl text-primary">
-                  {loading
-                    ? "..."
-                    : result.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
+                <div className="w-full px-5 py-4 rounded-2xl bg-primary/5 border border-primary/20 font-bold text-2xl text-primary flex items-center justify-between overflow-hidden">
+                  <span>
+                    {loading
+                      ? "..."
+                      : result.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                  </span>
                 </div>
               </div>
 
-              <button className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">
+              <button className="w-full bg-linear-to-r from-primary to-secondary text-white py-5 rounded-2xl font-bold text-lg hover:opacity-90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/25 mt-4">
                 Começar transferência
               </button>
             </div>

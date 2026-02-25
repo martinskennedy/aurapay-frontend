@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative py-16 lg:pt-24 lg:pb-24 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge de Destaque */}
@@ -37,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto"
+            className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto"
           >
             Simplifique sua vida financeira com a AuraPay. Pagamentos globais, 
             investimentos e segurança de ponta, tudo em um só lugar.
@@ -54,7 +54,7 @@ export default function Hero() {
               Começar Agora
               <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="w-full sm:w-auto px-8 py-4 border border-border rounded-full font-semibold hover:bg-gray-50 transition-colors">
+            <button className="w-full sm:w-auto px-8 py-4 border border-border rounded-full font-semibold hover:bg-foreground/5 transition-colors">
               Ver Planos
             </button>
           </motion.div>

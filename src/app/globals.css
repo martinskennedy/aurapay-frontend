@@ -1,30 +1,48 @@
 @import "tailwindcss";
 
 @theme {
+  --background: #ffffff;
+  --foreground: #020617;
+  --border: #e2e8f0;
   --color-primary: #6366f1;
   --color-secondary: #a855f7;
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --color-card: hsl(var(--card));
-}
-
-:root {
---background: 240 4.8% 95.9%; 
-  --foreground: 240 10% 3.9%;  --border: 214.3 31.8% 91.4%;
-  --card: 0 0% 100%;
+  --color-border: var(--border);
 }
 
 .dark {
-  /* Azul Marinho Profundo (Estilo Premium) */
-  --background: 222 47% 4%;     
-  --foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --card: 222 47% 7%;            /* Card levemente mais claro que o fundo */
+  --background: #020617;
+  --foreground: #d6dde4;
+  --border: #1e293b;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased transition-colors duration-300;
+  }
+
+  /* Remove as setas de inputs de número para um visual mais limpo no conversor */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  /* Classe para o campo de resultado do conversor não mostrar a barra de rolagem */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--background);
+  color: var(--foreground);
   -webkit-font-smoothing: antialiased;
 }
