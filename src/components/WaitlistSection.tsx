@@ -36,7 +36,7 @@ export default function WaitlistForm() {
   };
 
   return (
-    <section className="pb-16 bg-background">
+    <section className="bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-linear-to-br from-primary/40 via-transparent to-secondary/20 rounded-[2.5rem] p-8 md:p-16 border border-border/50 text-center relative overflow-hidden">
           

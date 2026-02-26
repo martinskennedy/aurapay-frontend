@@ -101,7 +101,7 @@ export default function CurrencyConverter() {
                 />
               </div>
 
-              <div className="flex justify-center -my-8 relative z-20">
+              <div className="flex justify-center my-8 sm:-my-8 relative z-20">
                 <div className="bg-primary text-white p-3 rounded-2xl shadow-xl shadow-primary/40 rotate-0 hover:rotate-180 transition-transform duration-500 cursor-pointer">
                   <ArrowRightLeft className="w-6 h-6" />
                 </div>
