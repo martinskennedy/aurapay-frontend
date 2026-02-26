@@ -3,6 +3,7 @@ import Features from "@/components/Features";
 import CurrencyConverter from "@/components/CurrencyConverter";
 import Clients from "@/components/Clients";
 import WaitlistSection from "@/components/WaitlistSection";
+import QuickStats from "@/components/QuickStats";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Features />
       <CurrencyConverter />
       <WaitlistSection />
+      <QuickStats />
     </main>
   );
 }
