@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import CurrencyConverter from "@/components/CurrencyConverter";
 import Clients from "@/components/Clients";
+import WaitlistSection from "@/components/WaitlistSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Clients />
       <Features />
       <CurrencyConverter />
+      <WaitlistSection />
     </main>
   );
 }
