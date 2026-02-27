@@ -30,33 +30,37 @@ const triplicatedClients = [...clients, ...clients, ...clients]; // Triplica par
 
 export default function Clients() {
   return (
-    <section className="container mx-auto">
+    <section className="container mx-auto" aria-labelledby="clients-title">
       <div className="py-16 px-4 bg-linear-to-br from-primary/50 via-transparent to-secondary/30 border-y border-border/50 rounded-2xl">
-        <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] mb-12">
+        <p
+          id="clients-title"
+          className="text-center text-sm font-semibold uppercase tracking-[0.2em] mb-12"
+        >
           Tecnologia utilizada por líderes globais
         </p>
 
         {/* Container do Carrossel */}
-        <div className="relative flex overflow-hidden">
+        <div className="relative flex overflow-hidden group">
           <motion.div
             className="flex gap-12 md:gap-24 pr-12 md:pr-24 items-center"
             animate={{
               x: ["0%", "-33%"], // Move metade da largura total
             }}
             transition={{
-              duration: 25, // Velocidade (quanto menor, mais rápido)
+              duration: 30, // Velocidade (quanto menor, mais rápido)
               ease: "linear",
               repeat: Infinity,
             }}
+            aria-hidden="true"
           >
             {triplicatedClients.map((client, index) => (
               <div
                 key={index}
-                className="relative h-7 md:h-10 w-28 md:w-32 shrink-0 group"
+                className="relative h-7 md:h-10 w-28 md:w-32 shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               >
                 <Image
                   src={client.logo}
-                  alt={`${client.name} logo`}
+                  alt=""
                   fill
                   className="object-contain"
                 />
@@ -65,9 +69,15 @@ export default function Clients() {
           </motion.div>
 
           {/* Gradientes nas pontas para suavizar a entrada/saída (Fade) */}
-          <div className="absolute inset-y-0 left-0 w-5 bg-linear-to-r from-background to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-5 bg-linear-to-l from-background to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
         </div>
+
+        {/* Texto invisível apenas para leitores de tela para explicar a seção */}
+        <span className="sr-only">
+          Logotipos das empresas parceiras: Stripe, Microsoft, Airbnb, Amazon e
+          Coca-Cola.
+        </span>
       </div>
     </section>
   );

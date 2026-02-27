@@ -56,16 +56,19 @@ export default function CurrencyConverter() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              <span
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all active:scale-95"
+              <button
+                type="button"
                 onClick={() => !loading && fetchExchangeRate()} // Só clica se não estiver carregando
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all active:scale-95"
+                aria-label="Atualizar cotação do dólar"
                 title="Clique para atualizar"
               >
                 <RefreshCw
                   className={`w-3 h-3 ${loading ? "animate-spin" : ""}`}
+                  aria-hidden="true"
                 />
                 {loading ? "Atualizando..." : "Câmbio ao vivo"}
-              </span>{" "}
+              </button>{" "}
               {rate > 0 && (
                 <div className="px-2.5 py-1.5 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
                   1 USD ={" "}
@@ -93,7 +96,9 @@ export default function CurrencyConverter() {
                   Você envia (BRL)
                 </label>
                 <input
+                  id="send-amount"
                   type="number"
+                  inputMode="decimal"
                   value={amount === 0 ? "" : amount}
                   onChange={(e) => setAmount(Number(e.target.value))}
                   className="w-full px-5 py-4 rounded-2xl bg-foreground/[0.03] border border-border focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-2xl outline-none"
@@ -101,17 +106,27 @@ export default function CurrencyConverter() {
                 />
               </div>
 
-              <div className="flex justify-center my-8 sm:-my-8 relative z-20">
+              <div
+                className="flex justify-center my-8 sm:-my-8 relative z-20"
+                aria-hidden="true"
+              >
                 <div className="bg-primary text-white p-3 rounded-2xl shadow-xl shadow-primary/40 rotate-0 hover:rotate-180 transition-transform duration-500 cursor-pointer">
                   <ArrowRightLeft className="w-6 h-6" />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2 ml-1">
+              <div className="relative">
+                <label
+                  className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2 ml-1"
+                >
                   Você recebe (USD)
                 </label>
-                <div className="w-full px-5 py-4 rounded-2xl bg-primary/5 border border-primary/20 font-bold text-2xl text-primary flex items-center justify-between overflow-hidden">
+                <div
+                  id="receive-amount"
+                  role="status" // Avisa leitores de tela quando o valor mudar
+                  aria-live="polite"
+                  className="w-full px-5 py-4 rounded-2xl bg-primary/5 border border-primary/20 font-bold text-2xl text-primary flex items-center justify-between overflow-hidden"
+                >
                   <span>
                     {loading
                       ? "..."

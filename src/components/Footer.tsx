@@ -1,37 +1,85 @@
 import { Wallet, Github, Linkedin, Twitter } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           {/* Logo e Descrição */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Wallet className="w-6 h-6 text-primary" />
+          <div className="col-span-1">
+            <Link
+              href="/"
+              className="flex items-center gap-2 mb-4 group outline-none"
+            >
+              <Wallet className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
               <span className="text-xl font-bold">AuraPay</span>
-            </div>
+            </Link>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Transformando a maneira como você lida com dinheiro. Global, seguro e instantâneo.
+              Transformando a maneira como você lida com dinheiro. Global,
+              seguro e instantâneo.
             </p>
           </div>
 
           {/* Links Rápidos */}
-          <div>
+          <nav aria-label="Links do Produto">
+            {" "}
             <h4 className="font-bold mb-4">Produto</h4>
             <ul className="space-y-2 text-sm text-gray-500">
-              <li><a href="#" className="hover:text-primary transition">Conta Digital</a></li>
-              <li><a href="#" className="hover:text-primary transition">Cartão Global</a></li>
-              <li><a href="#" className="hover:text-primary transition">Investimentos</a></li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary transition-colors focus-visible:text-primary outline-none"
+                >
+                  Conta Digital
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary transition-colors focus-visible:text-primary outline-none"
+                >
+                  Cartão Global
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary  transition-colors focus-visible:text-primary outline-none"
+                >
+                  Investimentos
+                </Link>
+              </li>
             </ul>
-          </div>
+          </nav>
 
           <div>
             <h4 className="font-bold mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm text-gray-500">
-              <li><a href="#" className="hover:text-primary transition">Sobre nós</a></li>
-              <li><a href="#" className="hover:text-primary transition">Carreiras</a></li>
-              <li><a href="#" className="hover:text-primary transition">Segurança</a></li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary transition-colors focus-visible:text-primary outline-none"
+                >
+                  Sobre nós
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary transition-colors focus-visible:text-primary outline-none"
+                >
+                  Carreiras
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-primary transition-colors focus-visible:text-primary outline-none"
+                >
+                  Segurança
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -39,15 +87,42 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-card rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Github className="w-5 h-5" /></a>
-              <a href="#" className="p-2 bg-prima rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="p-2 bg-card rounded-full border-2 border-border hover:text-primary transition shadow-sm"><Twitter className="w-5 h-5" /></a>
+              <a
+                href="https://github.com"
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Siga-nos no Github"
+                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Siga-nos no Linkedin"
+                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Siga-nos no Linkedin"
+                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border pt-8 text-center text-sm text-gray-500">
-          <p>© 2026 AuraPay. Todos os direitos reservados. Este é um projeto de portfólio.</p>
+          <p>
+            © 2026 AuraPay. Todos os direitos reservados. Este é um projeto de
+            portfólio.
+          </p>
         </div>
       </div>
     </footer>
