@@ -1,28 +1,42 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { UserResponse } from "@/features/auth/services/auth-service";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { User } from "@/features/auth/services/auth-service";
 
-// Zustand Store para gerenciar o estado de autenticação do usuário
 interface AuthState {
-  user: UserResponse | null;
+  user: User | null;
   isAuthenticated: boolean;
-  setAuth: (user: UserResponse) => void;
+  setAuth: (user: User, token: string) => void;
   logout: () => void;
 }
 
-// Criando a store com persistência no LocalStorage
 export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       user: null,
       isAuthenticated: false,
-      setAuth: (user) => set({ user, isAuthenticated: true }),
+
+      // Chamado após o sucesso do login
+      setAuth: (user, token) => {
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("aurapay-token", token);
+        }
+        set({ user, isAuthenticated: true });
+      },
+
+      // Limpa tudo e redireciona
       logout: () => {
+        if (typeof window !== "undefined") {
+          sessionStorage.removeItem("aurapay-token");
+          // Opcional: limpa o storage do zustand manualmente se necessário
+          sessionStorage.removeItem("aurapay-auth-storage");
+          window.location.href = "/auth/login";
+        }
         set({ user: null, isAuthenticated: false });
       },
     }),
     {
-      name: "aurapay-auth-storage", // Nome da chave no LocalStorage
+      name: "aurapay-auth-storage", // Nome da chave no sessionStorage
+      storage: createJSONStorage(() => sessionStorage),
     },
   ),
 );
