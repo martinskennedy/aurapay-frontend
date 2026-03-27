@@ -11,7 +11,7 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("aurapay-token");
+      const token = sessionStorage.getItem("aurapay-token");
       if (token && config.headers) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -27,17 +27,28 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       if (typeof window !== "undefined") {
-        localStorage.removeItem("aurapay-token");
-        localStorage.removeItem("aurapay-auth-storage");
+        sessionStorage.removeItem("aurapay-token");
+        sessionStorage.removeItem("aurapay-auth-storage");
         window.location.href = "/auth/login";
       }
     }
-// Extrai a mensagem de erro do backend, se disponível
+    // Extrai a mensagem de erro do backend, se disponível
     const data = error?.response?.data;
     const backendMessage =
       typeof data === "string"
         ? data
-        : data?.message || data?.error || error?.message || "Erro inesperado.";
+        : data?.message ||
+          data?.Message ||
+          data?.error ||
+          data?.Error ||
+          data?.title ||
+          (Array.isArray(data?.errors)
+            ? data.errors.join(" | ")
+            : typeof data?.errors === "object"
+              ? Object.values(data.errors).flat().join(" | ")
+              : undefined) ||
+          error?.message ||
+          "Erro inesperado.";
 
     return Promise.reject(new Error(backendMessage));
   },
