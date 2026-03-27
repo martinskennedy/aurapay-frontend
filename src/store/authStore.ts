@@ -5,6 +5,8 @@ import { User } from "@/features/auth/services/auth-service";
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
+  hasHydrated: boolean;
+  setHasHydrated: (value: boolean) => void;
   setAuth: (user: User, token: string) => void;
   logout: () => void;
 }
@@ -14,6 +16,8 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       isAuthenticated: false,
+      hasHydrated: false,
+      setHasHydrated: (value: boolean) => set({ hasHydrated: value }),
 
       // Chamado após o sucesso do login
       setAuth: (user, token) => {
@@ -27,7 +31,6 @@ export const useAuthStore = create<AuthState>()(
       logout: () => {
         if (typeof window !== "undefined") {
           sessionStorage.removeItem("aurapay-token");
-          // Opcional: limpa o storage do zustand manualmente se necessário
           sessionStorage.removeItem("aurapay-auth-storage");
           window.location.href = "/auth/login";
         }
@@ -37,6 +40,9 @@ export const useAuthStore = create<AuthState>()(
     {
       name: "aurapay-auth-storage", // Nome da chave no sessionStorage
       storage: createJSONStorage(() => sessionStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     },
   ),
 );
