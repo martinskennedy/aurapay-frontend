@@ -1,28 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --background: #ffffff;
-  --foreground: #020617;
-  --border: #e2e8f0;
+  --color-background: #ffffff;
+  --color-foreground: #020617;
+  --color-border: #e2e8f0;
   --color-primary: #6366f1;
   --color-secondary: #a855f7;
-  --color-border: var(--border);
 }
 
 .dark {
-  --background: #020617;
-  --foreground: #d6dde4;
-  --border: #1e293b;
+  --color-background: #020617;
+  --color-foreground: #d6dde4;
+  --color-border: #1e293b;
 }
 
 @layer base {
+  html,
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    @apply antialiased transition-colors duration-300;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Remove as setas de inputs de número para um visual mais limpo no conversor */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -31,18 +30,12 @@
 }
 
 @layer utilities {
-  /* Classe para o campo de resultado do conversor não mostrar a barra de rolagem */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  -webkit-font-smoothing: antialiased;
 }
