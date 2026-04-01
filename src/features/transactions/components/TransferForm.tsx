@@ -57,8 +57,6 @@ const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
 
   return (
     <form onSubmit={handleSubmit} className="p-6 bg-card border rounded-2xl space-y-4">
-      <h3 className="text-lg font-bold">Nova Transferência</h3>
-
       <div>
         <label className="text-sm font-medium">Conta de destino (6 dígitos)</label>
         <input
@@ -88,7 +86,7 @@ const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-primary text-primary-foreground py-2 rounded-md font-bold hover:opacity-90 disabled:opacity-50 transition-all"
+        className="w-full inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50"
       >
         {loading ? "Transferindo..." : "Transferir"}
       </button>
