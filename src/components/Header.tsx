@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Wallet, Menu, X, LayoutDashboard } from "lucide-react";
+import { Wallet, Menu, X, LayoutDashboard, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -14,7 +14,7 @@ const ThemeToggle = dynamic(() => import("./ThemeToggle"), {
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, logout } = useAuthStore();
 
   const menuItems = [
     { name: "Funcionalidades", href: "#" },
@@ -25,7 +25,6 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-2 sm:px-4 h-16 flex items-center justify-between gap-2">
-        
         {/* Esquerda: Logo */}
         <Link
           href="/"
@@ -63,24 +62,34 @@ export default function Header() {
 
           {isAuthenticated ? (
             /* Se logado: Botão para Dashboard */
-            <Link 
-              href="/dashboard"
-              className="flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold hover:bg-primary hover:text-white transition-all active:scale-95 shadow-sm"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              Painel
-            </Link>
+            <>
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold hover:bg-primary hover:text-white transition-all active:scale-95 shadow-sm"
+              >
+                <LayoutDashboard className="w-4 h-4" />
+                Painel
+              </Link>
+              <button
+                type="button"
+                onClick={logout}
+                className="flex items-center gap-2 bg-red-400 text-white border border-primary/20 px-3 py-1.5 sm:px-2 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold hover:bg-red-500 hover:text-white transition-all active:scale-95 shadow-sm"
+              >
+                <LogOut className="w-4 h-4" />
+                Sair
+              </button>
+            </>
           ) : (
             /* Se não logado: Entrar e Criar Conta */
             <>
-              <Link 
+              <Link
                 href="/auth/login"
                 className="text-[12px] sm:text-sm font-medium hover:text-primary transition px-1 sm:px-2 focus:text-primary outline-none"
               >
                 Entrar
               </Link>
-              
-              <Link 
+
+              <Link
                 href="/auth/signup"
                 className="bg-primary px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[11px] sm:text-sm text-white font-medium hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20 whitespace-nowrap shrink-0"
               >
@@ -114,7 +123,10 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-background border-b border-border overflow-hidden"
           >
-            <nav className="flex flex-col p-4 gap-4" aria-label="Navegação móvel">
+            <nav
+              className="flex flex-col p-4 gap-4"
+              aria-label="Navegação móvel"
+            >
               {menuItems.map((item) => (
                 <a
                   key={item.name}
