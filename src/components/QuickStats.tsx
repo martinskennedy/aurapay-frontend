@@ -32,7 +32,7 @@ export default function QuickStats() {
   ];
 
   return (
-    <ul className="pb-16 grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto list-none">
+    <ul className="pb-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto list-none">
       {stats.map((stat, i) => (
         <motion.li
           key={i}

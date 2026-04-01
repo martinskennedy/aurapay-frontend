@@ -52,16 +52,13 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
-              href="#"
+              href="/auth/signup"
               className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-semibold flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/25 focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
             >
               Começar Agora
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
 
-            <Link href="#" className="w-full sm:w-auto px-8 py-4 border border-border rounded-full font-semibold hover:bg-foreground/5 transition-colors">
-              Ver Planos
-            </Link>
           </motion.div>
         </div>
       </div>

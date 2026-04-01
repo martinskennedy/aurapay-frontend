@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { RefreshCw, ArrowRightLeft, AlertCircle } from "lucide-react";
+import { RefreshCw, AlertCircle } from "lucide-react";
 
 export default function CurrencyConverter() {
-  const [amount, setAmount] = useState<number>(1000);
+  const [amount] = useState<number>(1000);
   const [rate, setRate] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -15,7 +15,7 @@ export default function CurrencyConverter() {
       setLoading(true);
       // Usando a AwesomeAPI (Gratuita e sem necessidade de chave para BRL-USD)
       const response = await fetch(
-        "https://economia.awesomeapi.com.br/last/USD-BRL"
+        "https://economia.awesomeapi.com.br/last/USD-BRL",
       );
       const data = await response.json();
 
@@ -36,8 +36,6 @@ export default function CurrencyConverter() {
     fetchExchangeRate();
   }, []);
 
-  const result = amount > 0 && rate > 0 ? amount / rate : 0;
-
   return (
     <section className="pb-16 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4">
@@ -50,27 +48,27 @@ export default function CurrencyConverter() {
                 melhor taxa
               </span>
             </h2>
-            <p className="text-foreground/70 text-lg mb-8 max-w-md">
+            <p className="text-foreground/70 text-lg mb-8 max-w-md mx-auto">
               Diga adeus às taxas bancárias abusivas. Com a AuraPay, você usa o
               câmbio comercial em tempo real.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 max-w-max mx-auto">
               <button
                 type="button"
                 onClick={() => !loading && fetchExchangeRate()} // Só clica se não estiver carregando
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all active:scale-95"
+                className="flex items-center gap-2 px-2.5 py-2 rounded-full bg-primary/10 text-primary text-xl font-bold hover:bg-primary/20 transition-all active:scale-95"
                 aria-label="Atualizar cotação do dólar"
                 title="Clique para atualizar"
               >
                 <RefreshCw
-                  className={`w-3 h-3 ${loading ? "animate-spin" : ""}`}
+                  className={`${loading ? "animate-spin" : ""}`}
                   aria-hidden="true"
                 />
                 {loading ? "Atualizando..." : "Câmbio ao vivo"}
-              </button>{" "}
+              </button>
               {rate > 0 && (
-                <div className="px-2.5 py-1.5 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
+                <div className="px-2.5 py-1.5 rounded-full border border-border bg-background/50 backdrop-blur-sm text-xl font-medium">
                   1 USD ={" "}
                   {rate.toLocaleString("pt-BR", {
                     style: "currency",
@@ -88,7 +86,7 @@ export default function CurrencyConverter() {
             )}
           </div>
 
-          {/* Card da Calculadora */}
+          {/* Card da Calculadora 
           <div className="w-full max-w-md bg-background p-8 rounded-3xl shadow-2xl shadow-primary/80 border border-border relative z-10">
             <div className="space-y-6">
               <div className="relative">
@@ -138,11 +136,9 @@ export default function CurrencyConverter() {
                 </div>
               </div>
 
-              <button className="w-full bg-linear-to-r from-primary to-secondary text-white py-5 rounded-2xl font-bold text-lg hover:opacity-90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/25 mt-4">
-                Começar transferência
-              </button>
             </div>
           </div>
+          */}
         </div>
       </div>
     </section>

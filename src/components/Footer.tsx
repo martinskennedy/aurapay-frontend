@@ -1,6 +1,6 @@
 "use client";
 
-import { Wallet, Github, Linkedin, Twitter } from "lucide-react";
+import { Wallet, Github, Linkedin, X } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -90,20 +90,20 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/martinskennedy"
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Siga-nos no Github"
-                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                className="p-2 bg-card rounded-full border-2 border-gray-300 hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/kennedy-martins/"
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Siga-nos no Linkedin"
-                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                className="p-2 bg-card rounded-full border-2 border-gray-300 hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -112,9 +112,9 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Siga-nos no Linkedin"
-                className="p-2 bg-card rounded-full border-2 border-border hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                className="p-2 bg-card rounded-full border-2 border-gray-300 hover:border-primary/50 hover:text-primary transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-primary outline-none"
               >
-                <Twitter className="w-5 h-5" />
+                <X className="w-5 h-5" />
               </a>
             </div>
           </div>
