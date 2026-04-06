@@ -5,25 +5,39 @@ import { Globe, Lock, Zap, Smartphone } from "lucide-react";
 
 const features = [
   {
-    icon: <Globe className="w-8 h-8 text-primary" aria-hidden="true" />,
+    icon: (
+      <Globe
+        className="h-7 w-7 text-primary sm:h-8 sm:w-8"
+        aria-hidden="true"
+      />
+    ),
     title: "Pagamentos Globais",
     description:
       "Transfira dinheiro para mais de 150 países com as menores taxas do mercado.",
   },
   {
-    icon: <Lock className="w-8 h-8 text-primary" aria-hidden="true" />,
+    icon: (
+      <Lock className="h-7 w-7 text-primary sm:h-8 sm:w-8" aria-hidden="true" />
+    ),
     title: "Segurança de Elite",
     description:
       "Proteção biométrica e criptografia de ponta a ponta em todas as transações.",
   },
   {
-    icon: <Zap className="w-8 h-8 text-primary" aria-hidden="true" />,
+    icon: (
+      <Zap className="h-7 w-7 text-primary sm:h-8 sm:w-8" aria-hidden="true" />
+    ),
     title: "Instantâneo",
     description:
       "Seu dinheiro cai na conta em segundos, não importa o dia ou horário.",
   },
   {
-    icon: <Smartphone className="w-8 h-8 text-primary" aria-hidden="true" />,
+    icon: (
+      <Smartphone
+        className="h-7 w-7 text-primary sm:h-8 sm:w-8"
+        aria-hidden="true"
+      />
+    ),
     title: "Tudo no App",
     description:
       "Gerencie cartões, investimentos e contas em uma interface intuitiva.",
@@ -32,13 +46,16 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-16 bg-background" aria-labelledby="features-heading">
-      <div className="container mx-auto px-4">
+    <section
+      className="bg-background py-10 sm:py-14 lg:py-16"
+      aria-labelledby="features-heading"
+    >
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Título de seção para SEO */}
         <h2 id="features-heading" className="sr-only">
           Nossas Funcionalidades
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -51,13 +68,15 @@ export default function Features() {
                 scale: 1.02, // Aumenta levemente o tamanho
               }}
               tabIndex={0}
-              className="p-8 bg-linear-to-br from-primary/20 via-transparent to-secondary/5 rounded-2xl border border-border hover:shadow-xl transition-shadow group outline-none focus:ring-2 focus:ring-primary/40"
+              className="group rounded-2xl border border-border bg-linear-to-br from-primary/20 via-transparent to-secondary/5 p-5 transition-shadow outline-none hover:shadow-xl focus:ring-2 focus:ring-primary/40 sm:p-6 lg:p-8"
             >
-              <div className="mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              <div className="mb-3 inline-block transition-transform duration-300 group-hover:scale-110 sm:mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-500 leading-relaxed">
+              <h3 className="mb-2 text-lg font-bold text-foreground sm:text-xl">
+                {feature.title}
+              </h3>{" "}
+              <p className="text-sm leading-relaxed text-foreground/70 sm:text-base">
                 {feature.description}
               </p>
             </motion.div>

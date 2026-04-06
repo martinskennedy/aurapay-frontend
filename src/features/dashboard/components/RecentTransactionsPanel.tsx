@@ -44,7 +44,8 @@ export function RecentTransactionsPanel({
   const latestHistory = useMemo(() => {
     if (statementPeriod === "all") return history;
 
-    const days = statementPeriod === "7d" ? 7 : statementPeriod === "30d" ? 30 : 90;
+    const days =
+      statementPeriod === "7d" ? 7 : statementPeriod === "30d" ? 30 : 90;
     const startDate = new Date();
     startDate.setHours(0, 0, 0, 0);
     startDate.setDate(startDate.getDate() - days);
@@ -53,16 +54,18 @@ export function RecentTransactionsPanel({
   }, [history, statementPeriod]);
 
   return (
-    <div className="p-5">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+    <div className="px-4 py-5 sm:px-5">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h3 className="text-2xl font-bold tracking-tight text-foreground">
           Últimas Transações
         </h3>
 
         <select
           value={statementPeriod}
-          onChange={(e) => setStatementPeriod(e.target.value as StatementPeriod)}
-          className="rounded-full border border-border/60 bg-background/80 px-4 py-2 text-sm font-medium text-foreground outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/15"
+          onChange={(e) =>
+            setStatementPeriod(e.target.value as StatementPeriod)
+          }
+          className="w-full sm:w-auto rounded-full border border-border/60 bg-background/80 px-4 py-2 text-sm font-medium text-foreground outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/15"
         >
           <option value="7d">Últimos 7 dias</option>
           <option value="30d">Últimos 30 dias</option>
@@ -76,14 +79,16 @@ export function RecentTransactionsPanel({
       ) : historyError ? (
         <p className="text-sm text-red-500">{historyError}</p>
       ) : latestHistory.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Nenhuma transação encontrada.</p>
+        <p className="text-sm text-muted-foreground">
+          Nenhuma transação encontrada.
+        </p>
       ) : (
         <div className="max-h-80 overflow-y-auto pr-2">
           <ul className="space-y-4">
             {latestHistory.map((tx) => (
               <li
                 key={`detail-${tx.id}`}
-                className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-border/70 last:border-b-0 last:pb-0"
+                className="grid grid-cols-[auto_1fr] gap-3 border-b border-border/70 last:border-b-0 last:pb-0 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4"
               >
                 <div
                   className={`flex h-12 w-12 items-center justify-center rounded-full ${getTransactionIconWrapper(tx.type)}`}
@@ -91,17 +96,19 @@ export function RecentTransactionsPanel({
                   {getTransactionIcon(tx.type)}
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <p className="font-semibold text-foreground">
-                    {getTransactionTypeLabel(tx.type)}{" "}
+                    {getTransactionTypeLabel(tx.type)}
+                  </p>
+
+                  <p className="text-sm text-foreground/70">
                     {tx.amount.toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
                     })}
                   </p>
                 </div>
-
-                <span className="text-sm text-foreground/60">
+                <span className="col-start-2 mt-1 text-xs text-foreground/60 sm:col-auto sm:mt-0 sm:text-sm">
                   {new Date(tx.timestamp).toLocaleString("pt-BR")}
                 </span>
               </li>

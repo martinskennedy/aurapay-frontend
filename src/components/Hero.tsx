@@ -6,15 +6,15 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative py-16 lg:pt-24 lg:pb-24 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-4xl mx-auto">
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
           {/* Badge de Destaque */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
+            className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary sm:mb-8 sm:text-sm"
           >
             <Zap className="w-4 h-4" aria-hidden="true" />
             <span>Nova versão 2.0 disponível</span>
@@ -25,8 +25,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6"
+            className="mb-5 text-4xl font-extrabold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:mb-6 lg:text-7xl"
           >
+            {" "}
             O banco digital que <br className="hidden sm:block" />
             <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
               evolui com você.
@@ -38,7 +39,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto"
+            className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-foreground/70 sm:text-lg md:text-xl lg:mb-10"
           >
             Simplifique sua vida financeira com a AuraPay. Pagamentos globais,
             investimentos e segurança de ponta, tudo em um só lugar.
@@ -49,16 +50,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
           >
             <Link
               href="/auth/signup"
-              className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-semibold flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/25 focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-primary/25 transition-all outline-none hover:scale-105 active:scale-95 focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
               Começar Agora
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
-
           </motion.div>
         </div>
       </div>

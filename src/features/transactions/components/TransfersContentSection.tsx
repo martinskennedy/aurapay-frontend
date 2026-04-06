@@ -73,8 +73,8 @@ export function TransfersContentSection() {
   const filteredHistory = filterHistoryByPeriod(history, statementPeriod);
 
   return (
-    <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 rounded-[2.5rem] border border-border/50 bg-linear-to-br from-primary/40 via-transparent to-secondary/20 p-8 lg:grid-cols-[1fr_1.1fr] lg:p-10 relative overflow-hidden">
-      <div className="rounded-[30px] border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur-sm sm:p-7 dark:bg-background/50">
+    <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 rounded-[2.5rem] bg-linear-to-br from-primary/40 via-transparent to-secondary/20 lg:grid-cols-[1fr_1.1fr] lg:p-10 relative overflow-hidden">
+      <div className="rounded-[30px] border border-border/60 bg-background/80 p-2 shadow-sm backdrop-blur-sm sm:p-7 dark:bg-background/50">
         <div className="mb-6 flex items-center gap-4 min-h-18">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
             <Send className="h-7 w-7" />
@@ -90,40 +90,43 @@ export function TransfersContentSection() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-border/50 bg-white/80 p-4 sm:p-5 dark:bg-white/5">
+        <div className="rounded-3xl border border-border/50 bg-white/80  sm:p-5 dark:bg-white/5">
           <TransferForm onTransferSuccess={loadHistory} />
         </div>
       </div>
 
       <div className="rounded-[30px] border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur-sm sm:p-7 dark:bg-background/50">
-<div className="mb-6 flex flex-col gap-4 min-h-18 sm:flex-row sm:items-start sm:justify-between">
-  <div className="min-w-0">
-    <h2 className="text-2xl font-bold tracking-tight leading-none text-foreground">
-      Histórico completo
-    </h2>
-    <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-      Acompanhe entradas e saídas recentes da sua conta.
-    </p>
-  </div>
+        <div className="mb-6 flex flex-col gap-4 min-h-18 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <h2 className="text-2xl font-bold tracking-tight leading-none text-foreground">
+              Histórico completo
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+              Acompanhe entradas e saídas recentes da sua conta.
+            </p>
+          </div>
 
-  <div className="flex items-center gap-2 shrink-0">
-    <select
-      value={statementPeriod}
-      onChange={(e) => setStatementPeriod(e.target.value as StatementPeriod)}
-      className="rounded-full border border-border/60 bg-background/80 px-4 py-2 text-xs font-medium text-foreground outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/15"
-    >
-      <option value="7d">7 dias</option>
-      <option value="30d">30 dias</option>
-      <option value="90d">90 dias</option>
-      <option value="all">Tudo</option>
-    </select>
+          <div className="flex items-center gap-2 shrink-0">
+            <select
+              value={statementPeriod}
+              onChange={(e) =>
+                setStatementPeriod(e.target.value as StatementPeriod)
+              }
+              className="rounded-full border border-border/60 bg-background/80 px-4 py-2 text-xs font-medium text-foreground outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/15"
+            >
+              <option value="7d">7 dias</option>
+              <option value="30d">30 dias</option>
+              <option value="90d">90 dias</option>
+              <option value="all">Tudo</option>
+            </select>
 
-    <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary">
-      {historyLoading ? "Atualizando..." : `${filteredHistory.length} registros`}
-    </div>
-  </div>
-</div>
-
+            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary">
+              {historyLoading
+                ? "Atualizando..."
+                : `${filteredHistory.length} registros`}
+            </div>
+          </div>
+        </div>
 
         {historyLoading ? (
           <p className="text-sm text-muted-foreground">

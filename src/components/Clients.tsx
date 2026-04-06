@@ -30,19 +30,22 @@ const triplicatedClients = [...clients, ...clients, ...clients]; // Triplica par
 
 export default function Clients() {
   return (
-    <section className="container mx-auto" aria-labelledby="clients-title">
-      <div className="py-16 px-4 bg-linear-to-br from-primary/50 via-transparent to-secondary/30 border-y border-border/50 rounded-2xl">
+    <section
+      className="mx-auto w-full max-w-7xl"
+      aria-labelledby="clients-title"
+    >
+      <div className="rounded-2xl border-y border-border/50 bg-linear-to-br from-primary/50 via-transparent to-secondary/30 px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         <p
           id="clients-title"
-          className="text-center text-sm font-semibold uppercase tracking-[0.2em] mb-12"
+          className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.18em] text-foreground/70 sm:mb-10 sm:text-sm sm:tracking-[0.2em] lg:mb-12"
         >
           Tecnologia utilizada por líderes globais
         </p>
 
         {/* Container do Carrossel */}
-        <div className="relative flex overflow-hidden group">
+        <div className="group relative flex overflow-hidden">
           <motion.div
-            className="flex gap-12 md:gap-24 pr-12 md:pr-24 items-center"
+            className="flex items-center gap-8 pr-8 sm:gap-12 sm:pr-12 md:gap-20 md:pr-20 lg:gap-24 lg:pr-24"
             animate={{
               x: ["0%", "-33%"], // Move metade da largura total
             }}
@@ -56,8 +59,9 @@ export default function Clients() {
             {triplicatedClients.map((client, index) => (
               <div
                 key={index}
-                className="relative h-7 md:h-10 w-28 md:w-32 shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                className="relative h-7 w-24 shrink-0 grayscale opacity-50 transition-all duration-500 hover:grayscale-0 hover:opacity-100 sm:h-8 sm:w-28 md:h-9 md:w-32"
               >
+                {" "}
                 <Image
                   src={client.logo}
                   alt=""
@@ -69,8 +73,8 @@ export default function Clients() {
           </motion.div>
 
           {/* Gradientes nas pontas para suavizar a entrada/saída (Fade) */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-linear-to-r from-background to-transparent sm:w-16 lg:w-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-linear-to-l from-background to-transparent sm:w-16 lg:w-20" />
         </div>
 
         {/* Texto invisível apenas para leitores de tela para explicar a seção */}

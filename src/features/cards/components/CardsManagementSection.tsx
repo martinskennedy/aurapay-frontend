@@ -182,7 +182,7 @@ export function CardsManagementSection() {
                 key={card.id}
                 className="rounded-2xl border border-transparent px-4 py-4 transition hover:border-border/60 hover:bg-white/60 dark:hover:bg-white/5"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="font-semibold text-foreground">
                       {card.cardHolderName}
@@ -198,12 +198,12 @@ export function CardsManagementSection() {
                     </p>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
                     <button
                       type="button"
                       onClick={() => handleReveal(card.id)}
                       disabled={actionLoadingId === card.id}
-                      className="inline-flex items-center rounded-full border border-border/60 bg-white/80 px-3 py-1.5 text-xs font-medium shadow-sm transition hover:bg-foreground/5 disabled:opacity-50 dark:bg-white/5"
+                      className="inline-flex w-full justify-center items-center rounded-full border border-border/60 bg-white/80 px-3 py-2 text-xs font-medium shadow-sm transition hover:bg-foreground/5 disabled:opacity-50 sm:w-auto dark:bg-white/5"
                     >
                       {revealedData[card.id] ? "Esconder" : "Revelar"}
                     </button>
@@ -212,7 +212,7 @@ export function CardsManagementSection() {
                       type="button"
                       onClick={() => handleToggle(card.id)}
                       disabled={actionLoadingId === card.id}
-                      className="inline-flex items-center rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50"
+                      className="inline-flex w-full justify-center items-center rounded-full bg-primary px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50 sm:w-auto"
                     >
                       {card.isActive ? "Bloquear" : "Ativar"}
                     </button>
