@@ -1,6 +1,30 @@
-# AuraPay Frontend
+# 💳 AuraPay Frontend
 
-Frontend da plataforma **AuraPay**, simulando a experiência de um banco digital moderno, com autenticação, dashboard protegido e operações financeiras integradas ao backend .NET.
+Frontend da plataforma **AuraPay**, simulando a experiência de um banco digital moderno, com autenticação, dashboard protegido e operações financeiras integradas a um backend em .NET.
+
+> Projeto focado em demonstrar construção de aplicações reais com arquitetura escalável, integração com API e experiência moderna de usuário.
+
+---
+
+## 📸 Preview
+
+### 💻 Landing Page
+
+<p align="center">
+  <img src="./docs/home-desktop.png" width="900" />
+</p>
+
+### 📱 Mobile
+
+<p align="center">
+  <img src="./docs/home-mobile.png" width="300" />
+</p>
+
+### 📊 Dashboard
+
+<p align="center">
+  <img src="./docs/dashboard.png" width="900" />
+</p>
 
 ---
 
